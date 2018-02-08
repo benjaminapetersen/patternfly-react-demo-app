@@ -1,0 +1,87 @@
+{
+  "kind": "ProjectList",
+  "apiVersion": "project.openshift.io/v1",
+  "metadata": {
+    "selfLink": "/apis/project.openshift.io/v1/projects"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "my-other-project",
+        "selfLink": "/apis/project.openshift.io/v1/projects/my-other-project",
+        "uid": "5dd709c2-083a-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "82049",
+        "creationTimestamp": "2018-02-02T16:59:01Z",
+        "annotations": {
+          "openshift.io/description": "Stuff and things",
+          "openshift.io/display-name": "My Other Project",
+          "openshift.io/requester": "developer",
+          "openshift.io/sa.scc.mcs": "s0:c10,c5",
+          "openshift.io/sa.scc.supplemental-groups": "1000100000/10000",
+          "openshift.io/sa.scc.uid-range": "1000100000/10000"
+        }
+      },
+      "spec": {
+        "finalizers": [
+          "openshift.io/origin",
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    },
+    {
+      "metadata": {
+        "name": "my-third-project",
+        "selfLink": "/apis/project.openshift.io/v1/projects/my-third-project",
+        "uid": "847c3f39-0a1b-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "81987",
+        "creationTimestamp": "2018-02-05T02:23:13Z",
+        "annotations": {
+          "openshift.io/description": "",
+          "openshift.io/display-name": "My Third Project",
+          "openshift.io/requester": "developer",
+          "openshift.io/sa.scc.mcs": "s0:c11,c0",
+          "openshift.io/sa.scc.supplemental-groups": "1000110000/10000",
+          "openshift.io/sa.scc.uid-range": "1000110000/10000"
+        }
+      },
+      "spec": {
+        "finalizers": [
+          "openshift.io/origin",
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    },
+    {
+      "metadata": {
+        "name": "myproject",
+        "selfLink": "/apis/project.openshift.io/v1/projects/myproject",
+        "uid": "d8a2c501-077d-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "1341",
+        "creationTimestamp": "2018-02-01T18:29:32Z",
+        "annotations": {
+          "openshift.io/description": "Initial developer project",
+          "openshift.io/display-name": "My Project",
+          "openshift.io/requester": "developer",
+          "openshift.io/sa.scc.mcs": "s0:c10,c0",
+          "openshift.io/sa.scc.supplemental-groups": "1000090000/10000",
+          "openshift.io/sa.scc.uid-range": "1000090000/10000"
+        }
+      },
+      "spec": {
+        "finalizers": [
+          "openshift.io/origin",
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    }
+  ]
+}

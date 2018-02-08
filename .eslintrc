@@ -18,6 +18,14 @@
     "node": true,
     "jest": true
   },
+  # "ecmaFeatures": {
+  #   "jsx": true
+  # },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "plugins": ["prettier", "react"],
   "parser": "babel-eslint"
 }

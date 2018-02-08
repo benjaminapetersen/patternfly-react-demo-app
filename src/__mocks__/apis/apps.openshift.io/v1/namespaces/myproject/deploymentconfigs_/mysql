@@ -1,0 +1,189 @@
+{
+  "kind": "DeploymentConfig",
+  "apiVersion": "apps.openshift.io/v1",
+  "metadata": {
+    "name": "mysql",
+    "namespace": "myproject",
+    "selfLink": "/apis/apps.openshift.io/v1/namespaces/myproject/deploymentconfigs/mysql",
+    "uid": "158e3391-078c-11e8-8aa2-1a3473f9a04c",
+    "resourceVersion": "31398",
+    "generation": 2,
+    "creationTimestamp": "2018-02-01T20:11:27Z",
+    "labels": {
+      "app": "cakephp-mysql-persistent",
+      "template": "cakephp-mysql-persistent"
+    },
+    "annotations": {
+      "description": "Defines how to deploy the database",
+      "template.alpha.openshift.io/wait-for-ready": "true"
+    }
+  },
+  "spec": {
+    "strategy": {
+      "type": "Recreate",
+      "recreateParams": {
+        "timeoutSeconds": 600
+      },
+      "resources": {},
+      "activeDeadlineSeconds": 21600
+    },
+    "triggers": [
+      {
+        "type": "ImageChange",
+        "imageChangeParams": {
+          "automatic": true,
+          "containerNames": [
+            "mysql"
+          ],
+          "from": {
+            "kind": "ImageStreamTag",
+            "namespace": "openshift",
+            "name": "mysql:5.7"
+          },
+          "lastTriggeredImage": "docker.io/centos/mysql-57-centos7@sha256:9aa758b8af24ad97bdaa757de245379ddadf3e9aa9b44c79f74c27d60a28a8a5"
+        }
+      },
+      {
+        "type": "ConfigChange"
+      }
+    ],
+    "replicas": 1,
+    "test": false,
+    "selector": {
+      "name": "mysql"
+    },
+    "template": {
+      "metadata": {
+        "name": "mysql",
+        "creationTimestamp": null,
+        "labels": {
+          "name": "mysql"
+        }
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "mysql-data",
+            "persistentVolumeClaim": {
+              "claimName": "mysql"
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "mysql",
+            "image": "docker.io/centos/mysql-57-centos7@sha256:9aa758b8af24ad97bdaa757de245379ddadf3e9aa9b44c79f74c27d60a28a8a5",
+            "ports": [
+              {
+                "containerPort": 3306,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "MYSQL_USER",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "cakephp-mysql-persistent",
+                    "key": "database-user"
+                  }
+                }
+              },
+              {
+                "name": "MYSQL_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "cakephp-mysql-persistent",
+                    "key": "database-password"
+                  }
+                }
+              },
+              {
+                "name": "MYSQL_DATABASE",
+                "value": "default"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "512Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "mysql-data",
+                "mountPath": "/var/lib/mysql/data"
+              }
+            ],
+            "livenessProbe": {
+              "tcpSocket": {
+                "port": 3306
+              },
+              "initialDelaySeconds": 30,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "exec": {
+                "command": [
+                  "/bin/sh",
+                  "-i",
+                  "-c",
+                  "MYSQL_PWD='gu8gtRcMbC7QKRu5' mysql -h 127.0.0.1 -u cakephp -D default -e 'SELECT 1'"
+                ]
+              },
+              "initialDelaySeconds": 5,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {},
+        "schedulerName": "default-scheduler"
+      }
+    }
+  },
+  "status": {
+    "latestVersion": 1,
+    "observedGeneration": 2,
+    "replicas": 1,
+    "updatedReplicas": 1,
+    "availableReplicas": 1,
+    "unavailableReplicas": 0,
+    "details": {
+      "message": "config change",
+      "causes": [
+        {
+          "type": "ConfigChange"
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2018-02-01T20:12:01Z",
+        "lastTransitionTime": "2018-02-01T20:11:29Z",
+        "reason": "NewReplicationControllerAvailable",
+        "message": "replication controller \"mysql-1\" successfully rolled out"
+      },
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2018-02-02T00:56:26Z",
+        "lastTransitionTime": "2018-02-02T00:56:26Z",
+        "message": "Deployment config has minimum availability."
+      }
+    ],
+    "readyReplicas": 1
+  }
+}

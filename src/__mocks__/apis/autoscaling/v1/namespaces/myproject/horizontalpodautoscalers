@@ -1,0 +1,69 @@
+{
+  "kind": "HorizontalPodAutoscalerList",
+  "apiVersion": "autoscaling/v1",
+  "metadata": {
+    "selfLink": "/apis/autoscaling/v1/namespaces/myproject/horizontalpodautoscalers",
+    "resourceVersion": "82651"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "cakephp-mysql-persistent",
+        "namespace": "myproject",
+        "selfLink": "/apis/autoscaling/v1/namespaces/myproject/horizontalpodautoscalers/cakephp-mysql-persistent",
+        "uid": "4a25d82a-0790-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "16713",
+        "creationTimestamp": "2018-02-01T20:41:33Z",
+        "annotations": {
+          "autoscaling.alpha.kubernetes.io/conditions": "[{\"type\":\"AbleToScale\",\"status\":\"False\",\"lastTransitionTime\":\"2018-02-01T20:42:03Z\",\"reason\":\"FailedGetScale\",\"message\":\"the HPA controller was unable to get the target's current scale: no matches for /, Kind=DeploymentConfig\"}]"
+        }
+      },
+      "spec": {
+        "scaleTargetRef": {
+          "kind": "DeploymentConfig",
+          "name": "cakephp-mysql-persistent",
+          "apiVersion": "v1"
+        },
+        "minReplicas": 1,
+        "maxReplicas": 5,
+        "targetCPUUtilizationPercentage": 80
+      },
+      "status": {
+        "currentReplicas": 0,
+        "desiredReplicas": 0
+      }
+    },
+    {
+      "metadata": {
+        "name": "mysql",
+        "namespace": "myproject",
+        "selfLink": "/apis/autoscaling/v1/namespaces/myproject/horizontalpodautoscalers/mysql",
+        "uid": "2deb9fcd-078c-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "13273",
+        "creationTimestamp": "2018-02-01T20:12:08Z",
+        "labels": {
+          "app": "cakephp-mysql-persistent",
+          "template": "cakephp-mysql-persistent"
+        },
+        "annotations": {
+          "autoscaling.alpha.kubernetes.io/conditions": "[{\"type\":\"AbleToScale\",\"status\":\"False\",\"lastTransitionTime\":\"2018-02-01T20:12:38Z\",\"reason\":\"FailedGetScale\",\"message\":\"the HPA controller was unable to get the target's current scale: no matches for extensions/, Kind=DeploymentConfig\"}]",
+          "autoscaling.alpha.kubernetes.io/metrics": "[{\"type\":\"Pods\",\"pods\":{\"metricName\":\"packets-per-second\",\"targetAverageValue\":\"1k\"}}]",
+          "foo": "bar"
+        }
+      },
+      "spec": {
+        "scaleTargetRef": {
+          "kind": "DeploymentConfig",
+          "name": "mysql",
+          "apiVersion": "extensions/v1beta1"
+        },
+        "minReplicas": 1,
+        "maxReplicas": 5
+      },
+      "status": {
+        "currentReplicas": 0,
+        "desiredReplicas": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "kind": "EventList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/namespaces/myproject/events",
+    "resourceVersion": "82197"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "cakephp-mysql-persistent.150f4e5454cdf34e",
+        "namespace": "myproject",
+        "selfLink": "/api/v1/namespaces/myproject/events/cakephp-mysql-persistent.150f4e5454cdf34e",
+        "uid": "5c090cf8-0790-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "82155",
+        "creationTimestamp": "2018-02-01T20:42:03Z"
+      },
+      "involvedObject": {
+        "kind": "HorizontalPodAutoscaler",
+        "namespace": "myproject",
+        "name": "cakephp-mysql-persistent",
+        "uid": "4a25d82a-0790-11e8-8aa2-1a3473f9a04c",
+        "apiVersion": "autoscaling/v2beta1",
+        "resourceVersion": "16656"
+      },
+      "reason": "FailedGetScale",
+      "message": "no matches for /, Kind=DeploymentConfig",
+      "source": {
+        "component": "horizontal-pod-autoscaler"
+      },
+      "firstTimestamp": "2018-02-01T20:42:03Z",
+      "lastTimestamp": "2018-02-05T02:24:26Z",
+      "count": 1166,
+      "type": "Warning",
+      "eventTime": null,
+      "reportingComponent": "",
+      "reportingInstance": ""
+    },
+    {
+      "metadata": {
+        "name": "mysql.150f4cb94ebd5396",
+        "namespace": "myproject",
+        "selfLink": "/api/v1/namespaces/myproject/events/mysql.150f4cb94ebd5396",
+        "uid": "3fd11c6a-078c-11e8-8aa2-1a3473f9a04c",
+        "resourceVersion": "81615",
+        "creationTimestamp": "2018-02-01T20:12:38Z"
+      },
+      "involvedObject": {
+        "kind": "HorizontalPodAutoscaler",
+        "namespace": "myproject",
+        "name": "mysql",
+        "uid": "2deb9fcd-078c-11e8-8aa2-1a3473f9a04c",
+        "apiVersion": "autoscaling/v2beta1",
+        "resourceVersion": "13216"
+      },
+      "reason": "FailedGetScale",
+      "message": "no matches for extensions/, Kind=DeploymentConfig",
+      "source": {
+        "component": "horizontal-pod-autoscaler"
+      },
+      "firstTimestamp": "2018-02-01T20:12:38Z",
+      "lastTimestamp": "2018-02-05T02:19:56Z",
+      "count": 1216,
+      "type": "Warning",
+      "eventTime": null,
+      "reportingComponent": "",
+      "reportingInstance": ""
+    }
+  ]
+}

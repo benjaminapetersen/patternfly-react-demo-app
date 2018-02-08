@@ -9,6 +9,8 @@ const importIpsum = asyncComponent(() => import('./pages/Ipsum'));
 const importDolor = asyncComponent(() => import('./pages/Dolor'));
 const importAmet = asyncComponent(() => import('./pages/Amet'));
 const importOrbis = asyncComponent(() => import('./pages/Orbis'));
+const importFoo = asyncComponent(() => import('./pages/Foo'));
+const importFooChild = asyncComponent(() => import('./pages/FooChild'));
 const importLogin = asyncComponent(() => import('./pages/Login'));
 const importNotFound = asyncComponent(() => import('./pages/NotFound'));
 
@@ -54,6 +56,20 @@ export const Routes = (props: Props) => {
         component={importOrbis}
         props={props.childProps}
       />
+      <AuthenticatedRoute
+        path="/foo"
+        exact
+        component={importFoo}
+        props={props.childProps}
+      >
+        {/* nope! can't nest these suckers
+        <AuthenticatedRoute
+         path="/:child"
+         component={importFooChild}
+         props={props.childProps}
+        />
+        */}
+      </AuthenticatedRoute>
 
       {/* Finally, catch all unmatched routes */}
       <Route component={asyncComponent(importNotFound)} />
