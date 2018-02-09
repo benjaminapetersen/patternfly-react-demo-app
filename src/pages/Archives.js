@@ -7,18 +7,21 @@ import Article from '../components/Article/Article';
 
 class ArchivesPage extends React.Component<RouteComponentProps<any>, {}> {
   render() {
+    // can map an array to some components
     const articles = [
       {title: 'Udon Noodles', url: 'archives/noodles?type=udon'},
       {title: 'Soba Noodles', url: 'archives/noodles?type=soba'},
       {title: 'Wonton Noodles', url: 'archives/noodles?type=wonton'},
       {title: 'Pad Thai', url: 'archives/noodles?type=padthai'},
       {title: 'Lo Mein', url: 'archives/noodles?type=lomein'}
+    // key is unique index to improve rendering
+    // es6 spread operator
     ].map((article, i) => <li><Article key={i} {...article} /></li> );
 
     const randomStuff = [
-      'Random #1',
-      'Random #2',
-      'Random #3'
+      'Random thing #1',
+      'Random stuff #2',
+      'Random stuff and things #3'
     ];
 
     const randomThing = randomStuff[

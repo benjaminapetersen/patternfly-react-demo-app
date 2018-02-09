@@ -8,3 +8,8 @@ export default class Article extends React.Component {
     );
   }
 }
+
+Article.defaultProps = {
+  url: '',
+  title: ''
+}
