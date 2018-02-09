@@ -5,7 +5,7 @@ import { Routes } from './Routes';
 
 // TODO: update to the new VerticalNav
 // see https://github.com/patternfly/patternfly-react-demo-app/pull/13
-// and 
+// and
 //import { VerticalNav } from 'patternfly-react';
 //const { Masthead, Brand, IconBar, Item, SecondaryItem, TertiaryItem } = VerticalNav;
 
@@ -17,7 +17,8 @@ import './css/App.css';
 
 type Props = {
   history: Array<string>,
-  credentials: Credentials
+  credentials: Credentials,
+  ninnies: 'ninnies!!!!'
 };
 
 type State = {};

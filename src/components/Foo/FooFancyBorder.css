@@ -1,0 +1,17 @@
+.FancyBorder {
+  color: green;
+  border: 2px;
+}
+
+.FancyBorder-blue {
+  color: blue;
+  background: rgb(215, 215, 231);
+  border: 1px solid blue;
+}
+
+
+.FancyBorder-red {
+  color: red;
+  background: rgb(246, 212, 212);
+  border: 1px solid red;
+}
