@@ -104,6 +104,18 @@ export const VerticalNav = props => {
           />
           <span className="list-group-item-value">Archives</span>
         </RouteNavItem>
+        <RouteNavItem
+          href="/todo"
+          onClick={props.handleNavClick}
+          className="list-group-item"
+        >
+          <span
+            className="fa fa-paper-plane"
+            data-toggle="tooltip"
+            title="FluxTodo"
+          />
+          <span className="list-group-item-value">FluxTodo</span>
+        </RouteNavItem>
       </ul>
     </div>
   );
