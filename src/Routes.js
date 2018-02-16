@@ -17,6 +17,7 @@ const importArchives = asyncComponent(() => import('./pages/Archives'));
 const importArchive = asyncComponent(() => import('./pages/Archive'));
 
 const importFluxTodo = asyncComponent(() => import('./pages/FluxTodo'));
+const importMobxTodo = asyncComponent(() => import('./pages/MobxTodo'));
 
 const importLogin = asyncComponent(() => import('./pages/Login'));
 const importNotFound = asyncComponent(() => import('./pages/NotFound'));
@@ -97,9 +98,16 @@ export const Routes = (props: Props) => {
       />
 
       <AuthenticatedRoute
-        path="/todo"
+        path="/todo-flux"
         exact
         component={importFluxTodo}
+        props={props.childProps}
+      />
+
+      <AuthenticatedRoute
+        path="/todo-mobx"
+        exact
+        component={importMobxTodo}
         props={props.childProps}
       />
 

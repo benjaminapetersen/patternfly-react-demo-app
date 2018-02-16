@@ -105,7 +105,7 @@ export const VerticalNav = props => {
           <span className="list-group-item-value">Archives</span>
         </RouteNavItem>
         <RouteNavItem
-          href="/todo"
+          href="/todo-flux"
           onClick={props.handleNavClick}
           className="list-group-item"
         >
@@ -115,6 +115,18 @@ export const VerticalNav = props => {
             title="FluxTodo"
           />
           <span className="list-group-item-value">FluxTodo</span>
+        </RouteNavItem>
+        <RouteNavItem
+          href="/todo-mobx"
+          onClick={props.handleNavClick}
+          className="list-group-item"
+        >
+          <span
+            className="fa fa-paper-plane"
+            data-toggle="tooltip"
+            title="MobXTodo"
+          />
+          <span className="list-group-item-value">MobxTodo</span>
         </RouteNavItem>
       </ul>
     </div>
